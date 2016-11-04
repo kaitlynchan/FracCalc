@@ -1,10 +1,14 @@
 package fracCalc;
+import java.util.*;
 
 public class FracCalc {
 
     public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
+    	Scanner userInput = new Scanner (System.in);
+    	String stuff = userInput.nextLine();
+    	
 
     }
     
