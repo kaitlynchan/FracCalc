@@ -7,8 +7,9 @@ public class FracCalc {
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner userInput = new Scanner (System.in);
-    	String stuff = userInput.nextLine();
-    	
+    	System.out.println("Enter in a fraction string");
+    	String inputString = userInput.nextLine();
+    	System.out.println(produceAnswer(inputString));
 
     }
     
@@ -22,9 +23,30 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input)
     { 
+    	String operand2 = "";
         // TODO: Implement this function to produce the solution to the input
-        
-        return "";
+    	if (input.indexOf(" +") > 0){
+    	String operand =  input.substring(0, input.indexOf(" +"));
+    	String operator = input.substring(input.indexOf("+"),input.indexOf("+")+1);
+    	operand2 = input.substring(input.indexOf("+ ")+2);
+    		}
+    	else if (input.indexOf(" -") > 0){
+        	String operand =  input.substring(0, input.indexOf(" -"));
+        	String operator = input.substring(input.indexOf("-"),input.indexOf("-")+1);
+        	operand2 = input.substring(input.indexOf("- ")+2);
+        	}
+    	else if (input.indexOf(" +") > 0){
+        	String operand =  input.substring(0, input.indexOf(" *"));
+        	String operator = input.substring(input.indexOf("*"),input.indexOf("*")+1);
+        	operand2 = input.substring(input.indexOf("* ")+2);
+        	}
+    	else {
+        	String operand =  input.substring(0, input.indexOf(" /"));
+        	String operator = input.substring(input.indexOf("/"),input.indexOf("/")+1);
+        	operand2 = input.substring(input.indexOf("/ ")+2);
+        	}
+    	
+        return operand2;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
