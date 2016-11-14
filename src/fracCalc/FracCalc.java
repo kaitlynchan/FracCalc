@@ -9,7 +9,13 @@ public class FracCalc {
     	Scanner userInput = new Scanner (System.in);
     	System.out.println("Enter in a fraction string");
     	String inputString = userInput.nextLine();
-    	System.out.println(produceAnswer(inputString));
+    	
+    	
+    	while (!inputString.equals("quit")){
+    		System.out.println(produceAnswer(inputString));
+    		System.out.println("Enter in a fraction string");
+        	inputString = userInput.nextLine();        	
+    	}
 
     }
     
@@ -24,25 +30,27 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
     	String operand2 = "";
-        // TODO: Implement this function to produce the solution to the input
+    	String operand = "";
+    	String operator = "";
+        // TODO: Implement this function to produce the solution to the input    	
     	if (input.indexOf(" +") > 0){
-    	String operand =  input.substring(0, input.indexOf(" +"));
-    	String operator = input.substring(input.indexOf("+"),input.indexOf("+")+1);
+    	operand =  input.substring(0, input.indexOf(" +"));
+    	operator = input.substring(input.indexOf("+"),input.indexOf("+")+1);
     	operand2 = input.substring(input.indexOf("+ ")+2);
     		}
     	else if (input.indexOf(" -") > 0){
-        	String operand =  input.substring(0, input.indexOf(" -"));
-        	String operator = input.substring(input.indexOf("-"),input.indexOf("-")+1);
+        	operand =  input.substring(0, input.indexOf(" -"));
+        	operator = input.substring(input.indexOf("-"),input.indexOf("-")+1);
         	operand2 = input.substring(input.indexOf("- ")+2);
         	}
-    	else if (input.indexOf(" +") > 0){
-        	String operand =  input.substring(0, input.indexOf(" *"));
-        	String operator = input.substring(input.indexOf("*"),input.indexOf("*")+1);
+    	else if (input.indexOf(" *") > 0){
+        	operand =  input.substring(0, input.indexOf(" *"));
+        	operator = input.substring(input.indexOf("*"),input.indexOf("*")+1);
         	operand2 = input.substring(input.indexOf("* ")+2);
         	}
     	else {
-        	String operand =  input.substring(0, input.indexOf(" /"));
-        	String operator = input.substring(input.indexOf("/"),input.indexOf("/")+1);
+        	operand =  input.substring(0, input.indexOf(" /"));
+        	operator = input.substring(input.indexOf("/"),input.indexOf("/")+1);
         	operand2 = input.substring(input.indexOf("/ ")+2);
         	}
     	
