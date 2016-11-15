@@ -32,6 +32,14 @@ public class FracCalc {
     	String operand2 = "";
     	String operand = "";
     	String operator = "";
+    	int numerator1;
+    	int denominator1;
+    	int wholeNumber1;
+    	int numerator2;
+    	int denominator2;
+    	int wholeNumber2;
+    	
+    	
         // TODO: Implement this function to produce the solution to the input    	
     	if (input.indexOf(" +") > 0){
     	operand =  input.substring(0, input.indexOf(" +"));
@@ -53,7 +61,30 @@ public class FracCalc {
         	operator = input.substring(input.indexOf("/"),input.indexOf("/")+1);
         	operand2 = input.substring(input.indexOf("/ ")+2);
         	}
-    	
+    	if (operand.indexOf("-")>0){
+    		//negative operand
+    		if (operand.length()==2){
+    		//integer
+    		}
+    		else if (operand.length()==3){
+    		//fraction
+    		}
+    		else {
+    		//mixed number	
+    		}
+    	}
+    	else{
+    		//positive operand
+    		if (operand.length()==2){
+    		//integer
+    		}
+    		else if (operand.length()==3){
+    		//fraction
+    		}
+    		else{
+    		//mixed number	
+    		}
+    	}
         return operand2;
     }
 
