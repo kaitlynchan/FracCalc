@@ -40,7 +40,8 @@ public class FracCalc {
     	int wholeNumber2;
     	
     	
-        // TODO: Implement this function to produce the solution to the input    	
+        // TODO: Implement this function to produce the solution to the input 
+    	//separates the input string into the three components
     	if (input.indexOf(" +") > 0){
     	operand =  input.substring(0, input.indexOf(" +"));
     	operator = input.substring(input.indexOf("+"),input.indexOf("+")+1);
@@ -61,31 +62,47 @@ public class FracCalc {
         	operator = input.substring(input.indexOf("/"),input.indexOf("/")+1);
         	operand2 = input.substring(input.indexOf("/ ")+2);
         	}
-    	if (operand.indexOf("-")>0){
-    		//negative operand
-    		if (operand.length()==2){
+    //parsing operand1
+    		
+    		if (!(operand.indexOf("/")>0)){
     		//integer
+    			wholeNumber1 = Integer.parseInt(operand);
     		}
-    		else if (operand.length()==3){
+    		else if (!(operand.indexOf("_")>0) && (operand.indexOf("/")>0)){
     		//fraction
+    			numerator1 = Integer.parseInt(operand.substring(0, operand.indexOf("/")));
+    			denominator1 = Integer.parseInt(operand.substring(operand.indexOf("/")+1));
     		}
     		else {
     		//mixed number	
+    			numerator1 = Integer.parseInt(operand.substring(operand.indexOf("_")+1, operand.indexOf("/")));
+    			denominator1 = Integer.parseInt(operand.substring(operand.indexOf("/")+1));
+    			wholeNumber1 = Integer.parseInt(operand.substring(0,operand.indexOf("_")));
     		}
-    	}
-    	else{
-    		//positive operand
-    		if (operand.length()==2){
+    		
+//parsing operand2
+    		
+    		if (!(operand2.indexOf("/")>0)){
     		//integer
+    			wholeNumber2 = Integer.parseInt(operand2);
+    			numerator2 = 0;
+    			denominator2 = 1;
     		}
-    		else if (operand.length()==3){
+    		else if (!(operand2.indexOf("_")>0) && (operand2.indexOf("/")>0)){
     		//fraction
+    			numerator2 = Integer.parseInt(operand2.substring(0, operand2.indexOf("/")));
+    			denominator2 = Integer.parseInt(operand2.substring(operand2.indexOf("/")+1));
+    			wholeNumber2 = 0;
     		}
-    		else{
+    		else {
     		//mixed number	
+    			numerator2 = Integer.parseInt(operand2.substring(operand2.indexOf("_")+1, operand2.indexOf("/")));
+    			denominator2 = Integer.parseInt(operand2.substring(operand2.indexOf("/")+1));
+    			wholeNumber2 = Integer.parseInt(operand2.substring(0,operand2.indexOf("_")));
     		}
-    	}
-        return operand2;
+    	
+    	//returns parsed components of operand2
+        return "whole:" + wholeNumber2 + " numerator:" + numerator2 + " denominator:" + denominator2;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
