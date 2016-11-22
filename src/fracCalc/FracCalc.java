@@ -67,11 +67,14 @@ public class FracCalc {
     		if (!(operand.indexOf("/")>0)){
     		//integer
     			wholeNumber1 = Integer.parseInt(operand);
+    			numerator1 = 0;
+    			denominator1 = 1;
     		}
     		else if (!(operand.indexOf("_")>0) && (operand.indexOf("/")>0)){
     		//fraction
     			numerator1 = Integer.parseInt(operand.substring(0, operand.indexOf("/")));
     			denominator1 = Integer.parseInt(operand.substring(operand.indexOf("/")+1));
+    			wholeNumber1 = 0;
     		}
     		else {
     		//mixed number	
