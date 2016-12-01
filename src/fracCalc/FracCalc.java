@@ -36,22 +36,23 @@ public class FracCalc {
     	//separates the input string into the three components (identifies the operator)
     	if (input.indexOf(" +") > 0){
 	    	operand =  input.substring(0, input.indexOf(" +"));
-	    	operator = input.substring(input.indexOf("+"),input.indexOf("+")+1);
+	    	operator = ("+");
 	    	operand2 = input.substring(input.indexOf("+ ")+2);
     		}
     	else if (input.indexOf(" -") > 0){
         	operand =  input.substring(0, input.indexOf(" -"));
-        	operator = input.substring(input.indexOf("-"),input.indexOf("-")+1);
+        	operator = ("-");
         	operand2 = input.substring(input.indexOf("- ")+2);
+        	//System.out.println(operand + " " + operand2);
         	}
     	else if (input.indexOf(" *") > 0){
         	operand =  input.substring(0, input.indexOf(" *"));
-        	operator = input.substring(input.indexOf("*"),input.indexOf("*")+1);
+        	operator = ("*");
         	operand2 = input.substring(input.indexOf("* ")+2);
         	}
     	else {
         	operand =  input.substring(0, input.indexOf(" /"));
-        	operator = input.substring(input.indexOf("/"),input.indexOf("/")+1);
+        	operator = ("/");
         	operand2 = input.substring(input.indexOf("/ ")+2);
         	}
     	
@@ -60,12 +61,18 @@ public class FracCalc {
     	int numeratorOne =  parsedOne [0];
     	int denominatorOne = parsedOne [1];
     	int wholeNumberOne = parsedOne [2];
+    	//System.out.println(numeratorOne);
+    	//System.out.println(denominatorOne);
+    	//System.out.println(wholeNumberOne);
     	
     	//calls the parse function to separate operand2
     	int [] parsedTwo = FracCalc.parse(operand2);
     	int numeratorTwo =  parsedTwo [0];
     	int denominatorTwo = parsedTwo [1];
     	int wholeNumberTwo = parsedTwo [2];
+    	//System.out.println(numeratorTwo);
+    	//System.out.println(denominatorTwo);
+    	//System.out.println(wholeNumberTwo);
     	
     	//Call calculate function on the two operands
     	String calculateAnswer = FracCalc.Calculate(numeratorOne, denominatorOne, wholeNumberOne, numeratorTwo, denominatorTwo, wholeNumberTwo, operator);
@@ -114,10 +121,30 @@ public class FracCalc {
     	String calculateAnswer = " ";
     	
     	//Changes operands 1 and 2 to improper fractions
-    	int impropNumeratorOne = wholeNumberOne*denominatorOne+numeratorOne;
+    	int impropNumeratorOne;
+    	if (wholeNumberOne < 0){
+    		wholeNumberOne *= -1;
+    		impropNumeratorOne = -1 *(wholeNumberOne*denominatorOne+numeratorOne);
+    	}
+    	else {
+    		impropNumeratorOne = wholeNumberOne*denominatorOne+numeratorOne;
+    	}
+    	//System.out.println(impropNumeratorOne);
+    	
     	int impropDenominatorOne = denominatorOne;
-    	int impropNumeratorTwo = wholeNumberTwo*denominatorTwo+numeratorTwo;
+    	//System.out.println(impropDenominatorOne);
+    	
+    	int impropNumeratorTwo;
+    	if (wholeNumberTwo < 0){
+    		wholeNumberTwo *= -1;
+    		impropNumeratorTwo = -1 *(wholeNumberTwo*denominatorTwo+numeratorTwo);
+    	}
+    	else{
+    		impropNumeratorTwo = wholeNumberTwo*denominatorTwo+numeratorTwo;
+    	}
+    	//System.out.println(impropNumeratorTwo);
     	int impropDenominatorTwo = denominatorTwo;
+    	//System.out.println(impropDenominatorTwo);
     	
     	//calls method depending on operator
     	if (operator.equals("+")){
