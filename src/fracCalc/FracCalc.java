@@ -39,16 +39,19 @@ public class FracCalc {
 	    	operator = ("+");
 	    	operand2 = input.substring(input.indexOf("+ ")+2);
     		}
-    	else if (input.indexOf(" -") > 0){
-        	operand =  input.substring(0, input.indexOf(" -"));
-        	operator = ("-");
-        	operand2 = input.substring(input.indexOf("- ")+2);
-        	//System.out.println(operand + " " + operand2);
-        	}
+    	
     	else if (input.indexOf(" *") > 0){
         	operand =  input.substring(0, input.indexOf(" *"));
+        	System.out.println(operand);
         	operator = ("*");
         	operand2 = input.substring(input.indexOf("* ")+2);
+        	System.out.println(operand2);
+        	}
+    	else if (input.indexOf(" - ") > 0){
+        	operand =  input.substring(0, input.indexOf(" - "));
+        	operator = ("-");
+        	operand2 = input.substring(input.indexOf(" - ")+3);
+        	//System.out.println(operand + " " + operand2);
         	}
     	else {
         	operand =  input.substring(0, input.indexOf(" /"));
