@@ -1,7 +1,7 @@
 package fracCalc;
 import java.util.*;
 
-public class FracCalc {
+public class PracticeFracCalc {
 
 	public static void main(String[] args) 
     {   // TODO: Read the input from the user and call produceAnswer with an equation
@@ -26,30 +26,36 @@ public class FracCalc {
     }	    
 	
 	public static String produceAnswer(String input)
-    {	// This method takes in any length of fraction input and calculates the answer two operands at a time from left to right	
+    {	// TODO: Implement this function to produce the solution to the input 	
+    	//takes away spaces
     	
-		//takes away spaces and places the input string into an array
     	String [] components = input.split(" ");
+    	System.out.println(Arrays.toString(components));
+    	String operand2 = "";
     	String operand = "";
     	String operator = "";
-    	String operand2 = "";
     	int i = 0;
-    	String finalAnswer = components[0];
-    	//the loop separates the string to calculate two numbers at a time, and replaces the first operand each time with the previous answer
+    	String temporary = components[0];
     	while (i <= components.length-3){
-        	operand = finalAnswer;
+        	operand = temporary;
+        	System.out.println(operand);
         	operator = components[i+1];
+        	System.out.println(operator);
         	operand2 = components[i+2];
-        	finalAnswer = calculateTwo(operand2, operand, operator);
+        	System.out.println(operand2);
+        	temporary = calculateTwo(operand2, operand, operator);
         	i += 2;
     	}
-    	//returns the final answer to main method
-    	return finalAnswer;
+   
+    	//separates the input string into the three components (identifies the operator and two operands)
+    	
+    	return temporary;
     	  
     }
     
     public static String calculateTwo (String operand2, String operand, String operator){
-    	//this method calculates the answer to two operands
+    	// TODO: Implement this function to produce the solution to the input 	
+    	//separates the input string into the three components (identifies the operator and two operands)
     	
     	//call the parse function to separate operand1
     	int [] parsedOne = FracCalc.parse(operand);
@@ -63,10 +69,10 @@ public class FracCalc {
     	int denominatorTwo = parsedTwo [1];
     	int wholeNumberTwo = parsedTwo [2];
     	
-    	//Call calculate function on the two operands' parsed components
+    	//Call calculate function on the two operands
     	String calculateAnswer = FracCalc.Calculate(numeratorOne, denominatorOne, wholeNumberOne, numeratorTwo, denominatorTwo, wholeNumberTwo, operator);
     	
-    	//returns the solution
+    	//returns the solution to the fraction string input
         return calculateAnswer;
     }
     
@@ -161,7 +167,7 @@ public class FracCalc {
     	answerNumerator /= gcf;
     	answerDenominator /= gcf;
 
-    	if (answerNumerator % answerDenominator == 0){
+    	if (answerNumerator%answerDenominator==0){
            	//formats return answer for integer
     		return answerNumerator/answerDenominator + "";
     	}
@@ -186,7 +192,7 @@ public class FracCalc {
 		}
 		return answer;
 	}
-	//self-explanatory operation methods
+	
     public static int add(int impropNumeratorOne,int impropDenominatorOne, int impropNumeratorTwo, int impropDenominatorTwo){   	
     	int sumNumerator = (impropNumeratorOne*impropDenominatorTwo)+ (impropNumeratorTwo*impropDenominatorOne);
     	return sumNumerator;
