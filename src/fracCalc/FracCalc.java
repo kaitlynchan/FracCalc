@@ -9,11 +9,13 @@ public class FracCalc {
     	System.out.println("Enter in a fraction string");
     	String inputString = userInput.nextLine();
     	
+    	//runs until user enters "quit"
        	while (!inputString.equals("quit")){
-       		//runs until user enters "quit"
+       		//error handling: does not allow a zero in the denominator
        		if (inputString.indexOf("/0") >0){
        			System.out.println("ERROR: Dividing by zero violates a math law!");
        		}
+       		//error handling: does not all invalid format input of ++,--,**, or //
        		else if (inputString.indexOf("++") >0 || inputString.indexOf("--") >0 ||inputString.indexOf("**") >0 || inputString.indexOf("//") >0){
        			System.out.println("ERROR: Input is an invalid format!");
        		}
